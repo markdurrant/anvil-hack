@@ -62,10 +62,24 @@ for (var i = 0; i < shapePoints.length; i++) {
   }
 }
 
+var endTabHeight = myHeight / 1.4;
+var endTabWidth = 40;
+
 new Path(
   startPoint,
   startPoint + [myX, 0],
+  // startPoint + [myX, myHeight / 2 - endTabHeight / 2],
+  startPoint + [myX + endTabWidth, myHeight / 2 - endTabHeight / 2],
+  startPoint + [myX + endTabWidth, myHeight / 2 + endTabHeight / 2],
+  // startPoint + [myX, myHeight / 2 + endTabHeight / 2],
   startPoint + [myX, myHeight],
   startPoint + [0, myHeight],
   startPoint
 ).style = {strokeColor: 'green'};
+
+new Path(
+  startPoint + [myX, 0],
+  startPoint + [myX, myHeight]
+).style = {strokeColor: 'green', dashArray: [4, 4]};
+
+console.log(project.exportSVG({ asString: true }));
